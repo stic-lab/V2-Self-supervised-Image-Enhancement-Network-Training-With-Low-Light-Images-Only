@@ -21,7 +21,7 @@ parser.add_argument('--epoch', dest='epoch', type=int, default=3000, help='numbe
 parser.add_argument('--batch_size', dest='batch_size', type=int, default=16, help='number of samples in one batch')
 parser.add_argument('--patch_size', dest='patch_size', type=int, default=48, help='patch size')
 parser.add_argument('--start_lr', dest='start_lr', type=float, default=0.001, help='initial learning rate for adam')
-parser.add_argument('--eval_every_epoch', dest='eval_every_epoch', default=100, help='evaluating and saving checkpoints every #  epoch')
+parser.add_argument('--eval_every_epoch', dest='eval_every_epoch', type=int, default=100, help='evaluating and saving checkpoints every #  epoch')
 parser.add_argument('--checkpoint_dir', dest='ckpt_dir', default='./checkpoint', help='directory for checkpoints')
 parser.add_argument('--sample_dir', dest='sample_dir', default='./sample', help='directory for evaluating outputs')
 
@@ -60,13 +60,13 @@ def lowlight_train(lowlight_enhance):
     train_high_data_eq_guide_weight = []
 
 
-    train_low_data_names = glob('./data/our485/low/*.png') 
+    train_low_data_names = glob('../LOL-datasets/our485/low/*.png') 
     train_low_data_names.sort()
     
-    train_high_data_names = glob('./data/our485/self/*.png') 
+    train_high_data_names = glob('../LOL-datasets/our485/self/*.png') 
     train_high_data_names.sort()
 
-    train_real_high_data_names = glob('./data/our485/self/*.png') 
+    train_real_high_data_names = glob('../LOL-datasets/our485/self/*.png') 
     train_real_high_data_names.sort()
     
     # train_low_data_names[240:480]=train_real_high_data_names[240:480]
@@ -117,9 +117,9 @@ def lowlight_train(lowlight_enhance):
     eval_low_data = []
     eval_high_data = []
     eval_real_high_data = []
-    eval_low_data_name = glob('./data/eval15/low/*.*')
-    eval_high_data_name = glob('./data/eval15/self/*.*')
-    eval_real_high_data_name = glob('./data/eval15/high/*.*')
+    eval_low_data_name = glob('../LOL-datasets/eval15/low/*.*')
+    eval_high_data_name = glob('../LOL-datasets/eval15/self/*.*')
+    eval_real_high_data_name = glob('../LOL-datasets/eval15/high/*.*')
 
     for idx in range(len(eval_low_data_name)):
         eval_low_im = load_images(eval_low_data_name[idx])

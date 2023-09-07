@@ -1,0 +1,7 @@
+tensorflow==2.2.0
+tensorflow-estimator==2.2.*
+protobuf==3.20.*
+Pillow
+matplotlib
+opencv-python
+tensorflow-addons==0.10.0
